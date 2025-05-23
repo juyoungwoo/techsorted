@@ -118,7 +118,7 @@ if api_key and uploaded_file and hierarchy_text.strip():
 
     # 전체 분류
     def classify_row(row):
-        text = extract_text(row)
+        text = ' '.join([str(val) for val in row.values if isinstance(val, str)])
         major = classify_major(text, hierarchy, client)
         mid = classify_mid(text, major, hierarchy, client)
         sub = classify_sub(text, major, mid, hierarchy, client)
